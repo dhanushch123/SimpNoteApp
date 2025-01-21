@@ -404,8 +404,8 @@
   }
   .list .round
   {
-    height : 17vw;
-    width : 17vw;
+    height : 16.5vw;
+    width : 16.5vw;
     font-size: 32px;
     flex-shrink: 0;
   }
@@ -457,8 +457,8 @@
   {
     min-width: 100vw;
     max-width: 100vw;
-    min-height: 9vh;
-    max-height: 9vh;
+    min-height: 8.8vh;
+    max-height: 8.8vh;
     gap : 6px;
     padding : 1vh 2.5vw;
   }
@@ -472,8 +472,8 @@
   {
     min-width: 100vw;
     max-width: 100vw;
-    min-height: 57.8vh;
-    max-height: 57.8vh;
+    min-height: 57vh;
+    max-height: 57vh;
   }
   .edit .bottom
   {
@@ -512,7 +512,7 @@
 
   .bottom img
   {
-    top : 19vh;
+    top : 20vh;
     left : 90vw;
   }
 
