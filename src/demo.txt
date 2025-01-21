@@ -1,0 +1,97 @@
+import "./App.css";
+import Fun from "./assets/Fun.png";
+import Lock from "./assets/Lock.svg";
+import NewNotes from "./NewNotes";
+import { useState } from "react";
+import Send from './assets/Send.svg'
+import Send1 from './assets/Send1.svg'
+function App() {
+  const [select, setSelect] = useState(false);
+  const [name, setName] = useState("");
+  const [color, setColor] = useState("blue");
+  const [create, setCreate] = useState(false);
+  const [sf, setSf] = useState("");
+  const [notes, setNotes] = useState([]);
+  const[edit,setEdit] = useState(false);
+  const[currentNote,setCurrent] = useState({name : "",color : "",sf : ""});
+  const [selectedId, setSelectedId] = useState(null);
+  const[text,setText] = useState("");
+
+
+  let notesList =  JSON.parse(localStorage.getItem(selectedId))
+
+
+  const current = new Date();
+  const date = current.toLocaleDateString()
+  const time = current.toLocaleTimeString()
+
+
+  return (
+    <div className="container">
+      {select && (
+        <div className="NewNotes" style={{opacity : "1"}}>
+          <NewNotes
+            name={name}
+            setName={setName}
+            color={color}
+            setColor={setColor}
+            create={create}
+            setCreate={setCreate}
+            setSf={setSf}
+            setNotes={setNotes}
+            setSelect={setSelect}
+          />
+        </div>
+      )}
+      <div
+        className="left"
+        style={{
+          backgroundColor: select ? "#2F2F2FBF" : "white",
+          opacity: select ? 0.9 : 1
+        }}
+      >
+        <div className="heading"> Pocket Notes </div>
+        <div
+          onClick={() => {
+            setSelect(true);
+            console.log("going to add element")
+           
+          }}
+          className="add"
+        >
+         
+          +
+        </div>
+        <div className="list"  >
+          {notes && notes.length > 0
+            ? notes.map((item) => {
+                let unq = item[0] + item[1];
+                return (
+                  <div  onClick={()=>{
+                    setEdit(true)
+                    setCurrent({name : item[0],color : item[1],sf : item[2]})
+                    // we will store notes corresponding to their name and color using local Storage
+                    console.log(unq);
+                    
+                    setSelectedId(unq)
+                    
+                     {/* backgroundColor: select ? "#2F2F2FBF"  #2F2F2FBF */}
+                      
+                  }} id={unq} key={item[0]} style={{backgroundColor : unq===selectedId?"#2F2F2F2B" : select ? "#2F2F2FBF":"white" ,borderRadius : unq===selectedId?"8px" : "0px",opacity: select ? 0.75 : 1 }}  className="entry">
+                    <div className="round" style={{ backgroundColor: item[1] }}>
+                
+                      {item[2]}
+                    </div>
+
+                    <p> {item[0]} </p>
+                  </div>
+                );
+              })
+            : ""}
+          
+        </div>
+      </div>
+      
+    </div>
+  );
+}
