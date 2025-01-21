@@ -363,8 +363,8 @@
   }
   .left
   {
-    min-height : 100vh;
-    max-height : 100vh;
+    min-height : 94vh;
+    max-height : 94vh;
     min-width: 100vw;
     max-width: 100vw;
     padding-left : 4vw;
@@ -440,8 +440,8 @@
 
   .edit
   {
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 94vh;
+    max-height: 94vh;
     max-width: 100vw;
     min-width: 100vw;
     box-sizing: border-box;
